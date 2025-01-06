@@ -60,11 +60,10 @@ The Candidate Search Application allows users to browse potential candidates sou
 
 ## Usage
 
-1. Open the application in your browser at `http://localhost:5173`.
-2. Browse candidates on the Candidate Search page:
-   - Save candidates using the "+" button.
-   - Skip candidates using the "-" button.
-3. View saved candidates on the Saved Candidates page.
+1. Browse candidates on the Candidate Search page:
+   - Save candidates using the "save" button.
+   - Skip candidates using the "next" button.
+1. View saved candidates on the Saved Candidates page.
 
 ## Scripts
 
