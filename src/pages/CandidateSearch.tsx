@@ -1,22 +1,37 @@
 import { useState, useEffect } from 'react';
-import { searchGithub } from '../api/API.tsx'; 
+import { searchGithub, searchGithubUser } from '../api/API.tsx';  
+import { GithubUser } from '../interfaces/Candidate.interface.tsx'; 
 
 const CandidateSearch = () => {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<GithubUser[]>([]);  
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
       setIsLoading(true);
-      const userData = await searchGithub();
-      setUsers(userData);
-      setIsLoading(false);
+      try {
+        const randomUsers = await searchGithub();
+
+        const detailedUsers = await Promise.all(
+          randomUsers.map(async (user: { login: string }) => {
+            const userDetails = await searchGithubUser(user.login);  
+            return userDetails;  
+          })
+        );
+
+        setUsers(detailedUsers);  
+      } catch (err) {
+        console.error('Error fetching users:', err);
+      } finally {
+        setIsLoading(false);
+      }
     };
+
     fetchUsers();
   }, []);
 
-  const handleSaveUser = (user: any) => {
+  const handleSaveUser = (user: GithubUser) => {
     const saved = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
     saved.push(user);
     localStorage.setItem('savedCandidates', JSON.stringify(saved));
@@ -65,8 +80,8 @@ const CandidateSearch = () => {
           <button onClick={handleNextUser}>Next</button>
           <button
             onClick={() => {
-              handleSaveUser(currentUser);
-              handleNextUser();
+              handleSaveUser(currentUser);  
+              handleNextUser();  
             }}
           >
             Save

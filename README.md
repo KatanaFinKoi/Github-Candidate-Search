@@ -4,6 +4,10 @@
 ## Overview
 The Candidate Search Application allows users to browse potential candidates sourced from the GitHub API. Users can save candidates they are interested in or skip candidates they do not want to save. The app also provides a way to view a list of saved candidates, which persists across page reloads. This project can be found live at: https://github-candidate-search-uu3x.onrender.com 
 
+## Preview
+![Search](screenshot/candidate-search-screenshot.png)
+![Saved](screenshot/candidate-search-screenshot.png)
+
 ## Features
 
 ### Candidate Search Page
