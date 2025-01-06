@@ -33,7 +33,7 @@ const searchGithubUser = async (username: string) => {
     });
     if (response.status === 404) {
       console.warn(`User ${username} not found. Skipping...`);
-      return null;  // Return null if the user does not exist
+      return null; 
     }
     const data = await response.json();
     if (!response.ok) {

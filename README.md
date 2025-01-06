@@ -6,7 +6,7 @@ The Candidate Search Application allows users to browse potential candidates sou
 
 ## Preview
 ![Search](screenshot/candidate-search-screenshot.png)
-![Saved](screenshot/candidate-search-screenshot.png)
+![Saved](screenshot/candidate-search-saved-screenshot.png)
 
 ## Features
 
