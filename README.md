@@ -1,33 +1,108 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Candidate Search Application
 
-Currently, two official plugins are available:
+## Overview
+The Candidate Search Application allows users to browse potential candidates sourced from the GitHub API. Users can save candidates they are interested in or skip candidates they do not want to save. The app also provides a way to view a list of saved candidates, which persists across page reloads.
 
-* [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md), which uses [Babel](https://babeljs.io/) for Fast Refresh
-* [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc), which uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### Candidate Search Page
+- **Candidate Information Display:** When the page loads, one candidate's details are displayed, including:
+  - Name
+  - Username
+  - Location
+  - Avatar
+  - Email
+  - GitHub Profile Link (`html_url`)
+  - Company
+- **Save Candidate:** Clicking the "save" button saves the candidate to the list of potential candidates and displays the next candidate.
+- **Skip Candidate:** Clicking the "next" button skips the current candidate and displays the next one without saving.
+- **No More Candidates:** When no candidates are available for review, an appropriate message is displayed.
 
-If you're developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Saved Candidates Page
+- **Saved Candidate List:** Displays a list of previously saved candidates, including:
+  - Name
+  - Username
+  - Location
+  - Avatar
+  - Email
+  - GitHub Profile Link (`html_url`)
+  - Company
+- **Persistent Data:** The list of saved candidates persists across page reloads.
+- **No Saved Candidates:** If no candidates have been saved, an appropriate message is displayed.
 
-* Configure the top-level `parserOptions` property as follows:
+## Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/candidate-search-app.git
+   ```
 
-* Replace `plugin:@typescript-eslint/recommended` with `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`.
-* Optionally, add `plugin:@typescript-eslint/stylistic-type-checked`.
-* Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` and `plugin:react/jsx-runtime` to the `extends` list.
+2. Navigate to the project directory:
+   ```bash
+   cd candidate-search-app
+   ```
 
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Create a `.env` file in the root directory and add your GitHub token:
+   ```env
+   VITE_GITHUB_TOKEN=your_github_personal_access_token
+   ```
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+1. Open the application in your browser at `http://localhost:5173`.
+2. Browse candidates on the Candidate Search page:
+   - Save candidates using the "+" button.
+   - Skip candidates using the "-" button.
+3. View saved candidates on the Saved Candidates page.
+
+## Scripts
+
+- **`npm run dev`**: Start the development server.
+- **`npm run build`**: Build the application for production.
+- **`npm run preview`**: Preview the production build.
+
+## Technologies Used
+
+- **Frontend:** React, TypeScript
+- **Styling:** CSS (or framework if applicable)
+- **State Management:** React useState and useEffect hooks
+- **API:** GitHub REST API
+
+## Components
+
+### Candidate Search Page
+- **Features:**
+  - Displays candidate details.
+  - Allows saving or skipping candidates.
+  - Handles no candidates gracefully.
+
+### Saved Candidates Page
+- **Features:**
+  - Displays a list of saved candidates.
+  - Provides a remove option for saved candidates.
+  - Handles empty lists gracefully.
+
+## Known Issues
+
+- None at this time.
+
+## Future Enhancements
+
+- Add filtering options for candidates (e.g., location, company).
+- Include pagination for saved candidates.
+- Improve error handling and notifications.
+
+## Acknowledgments
+
+- GitHub for providing the REST API.
