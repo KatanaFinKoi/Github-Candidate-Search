@@ -25,12 +25,34 @@ const SavedCandidates = () => {
         <div>
           {savedUsers.map((user) => (
             <div key={user.login} className="saved-candidate-card">
-              <img src={user.avatar_url} alt={user.login} />
-              <div>
-                <h3>{user.login}</h3>
-                <p>{user.bio || 'No bio available'}</p>
+              <img
+                src={user.avatar_url}
+                alt={user.login}
+              />
+              <div className="candidate-info">
+                <h3>{user.name || 'No name available'}</h3>
+                <p>
+                  <strong>Username:</strong> {user.login}
+                </p>
+                <p>
+                  <strong>Location:</strong> {user.location || 'No location available'}
+                </p>
+                <p>
+                  <strong>Email:</strong> {user.email || 'No email available'}
+                </p>
+                <p>
+                  <strong>Company:</strong> {user.company || 'No company available'}
+                </p>
+                <p>
+                  <strong>Profile:</strong>{' '}
+                  <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+                    {user.html_url}
+                  </a>
+                </p>
               </div>
-              <button onClick={() => handleRemoveUser(user.login)}>Remove</button>
+              <div className="candidate-actions" >
+                <button onClick={() => handleRemoveUser(user.login)}>Remove</button>
+              </div>
             </div>
           ))}
         </div>
@@ -40,4 +62,3 @@ const SavedCandidates = () => {
 };
 
 export default SavedCandidates;
-

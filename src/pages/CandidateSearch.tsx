@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { searchGithub } from '../api/API.tsx'; // Adjust the import path
-// import { Link } from 'react-router-dom';
 
 const CandidateSearch = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -11,8 +10,8 @@ const CandidateSearch = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       setIsLoading(true);
-      const data = await searchGithub();
-      setUsers(data);
+      const userData = await searchGithub();
+      setUsers(userData);
       setIsLoading(false);
     };
     fetchUsers();
@@ -41,9 +40,29 @@ const CandidateSearch = () => {
       <h1>Search GitHub Candidates</h1>
       <div className="candidate-card">
         <div className="candidate-info">
-          <img src={currentUser.avatar_url} alt={currentUser.login} />
-          <h3>{currentUser.login}</h3>
-          <p>{currentUser.bio || 'No bio available'}</p>
+          <img
+            src={currentUser.avatar_url}
+            alt={currentUser.login}
+          />
+          <h3>{currentUser.name || 'No name available'}</h3>
+          <p>
+            <strong>Username:</strong> {currentUser.login}
+          </p>
+          <p>
+            <strong>Location:</strong> {currentUser.location || 'No location available'}
+          </p>
+          <p>
+            <strong>Email:</strong> {currentUser.email || 'No email available'}
+          </p>
+          <p>
+            <strong>Company:</strong> {currentUser.company || 'No company available'}
+          </p>
+          <p>
+            <strong>Profile:</strong>{' '}
+            <a href={currentUser.html_url} target="_blank" rel="noopener noreferrer">
+              {currentUser.html_url}
+            </a>
+          </p>
         </div>
         <div className="candidate-actions">
           <button onClick={handleNextUser}>Next</button>

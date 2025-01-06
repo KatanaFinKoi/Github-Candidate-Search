@@ -118,3 +118,9 @@ tbody tr:nth-child(odd) {
   width: 80vw;
   table-layout: fixed;
 }
+
+.candidate-info, .candidate-actions, .nav {
+text-align: center;
+justify-content: center;
+align-items: center;  
+}

@@ -1,6 +1,6 @@
 const Nav = () => {
   return (
-    <div>
+    <div className="nav">
       <a href="/">
         <button>search</button>
       </a>
