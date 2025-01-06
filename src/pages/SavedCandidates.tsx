@@ -3,13 +3,11 @@ import { useState, useEffect } from 'react';
 const SavedCandidates = () => {
   const [savedUsers, setSavedUsers] = useState<any[]>([]);
 
-  // Load saved candidates from localStorage on page load
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
     setSavedUsers(saved);
   }, []);
 
-  // Remove a saved candidate from the list
   const handleRemoveUser = (username: string) => {
     const updatedSavedUsers = savedUsers.filter((user) => user.login !== username);
     setSavedUsers(updatedSavedUsers);
